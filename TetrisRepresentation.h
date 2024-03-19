@@ -8,6 +8,8 @@
 class Tablero {
 public:
 
+
+    void dropRows();
     int retmin();//metodo temporal que devuelve la minima
     int retmax();
     Tablero();
@@ -17,9 +19,9 @@ public:
     void columnHeight();
     int highestC(int x);
     void calculateMinMax();
-    void rotarIzquierda();
-    void rotarDerecha();
-    void rotar180();
+    void rotarIzquierda(int num);
+    void rotarDerecha(int num);
+    void rotar180(int num);
     void update();
     void print();   
      void printT();

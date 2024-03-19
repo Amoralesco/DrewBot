@@ -36,38 +36,27 @@ return 0;
 
 
 void pruebas(){
-    int movimientos = 2;
-    int rotacion = 3;
     Tablero tetris;
+    int imax = 500;
+   // tetris.obtenerFiguras();
 
-    tetris.obtenerFiguras();
-    for(int i = 1 ;i < 6; i++){
-        cout<<tetris.nextTetros[i]<<" tetro "<<endl;
-    }
     
-    while(true){
-       
+    while(imax>0){
         tetris.update();
-        if(rotacion == 1){
-                tetris.rotarDerecha();
-        }
-        if(rotacion == 2 ){
-            tetris.rotar180();
-        }
-        if(rotacion == 3){
-            
-            tetris.rotarIzquierda();  
-            
-            
-        }
-        tetris.printT();
-        tetris.setTable(movimientos+tetris.initialposition);
-        tetris.calculateMinMax();
-        tetris. steps(movimientos,rotacion,tetris.minx,tetris.maxx);
-         tetris.obtenerFiguras();
+        tetris.betterMove();
+        tetris.resetVirtualT();
         tetris.print();
-        Sleep(10);
+        //tetris.printT();
 
+
+      //   tetris.calculateMinMax(); // quitar funcion cuando se quite los ifs de las rotaciones // mirar si se puede poner en un lugar mejor
+      //  tetris.setTable(movimientos+tetris.initialposition);
+      //  tetris.steps(movimientos,rotacion,tetris.minx,tetris.maxx);
+      //  tetris.dropRows();
+  //       tetris.obtenerFiguras();
+      //  tetris.print();
+     //   Sleep(1)//este sleep lo ralentiza no permite el calculo debido a que cuando cae ya no detecta la ficha y por ende no acciona;
+    imax--;
         }
         
     
