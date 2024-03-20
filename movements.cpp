@@ -18,7 +18,7 @@ using namespace std;
 
 void Tablero::steps(int v1, int v2, int s1, int s2){
 
-    Sleep(100);
+    Sleep(10);
     if(v2 == 1){
         movement(GIROI);   
        //  Sleep(100);
@@ -40,7 +40,7 @@ void Tablero::steps(int v1, int v2, int s1, int s2){
             movement(MOVERD);
         }
     }
-    Sleep(20);
+   Sleep(20);
     movement(SALTO);
 
 }

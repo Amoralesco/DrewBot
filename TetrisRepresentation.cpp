@@ -185,15 +185,9 @@ void Tablero::rotarIzquierda(int num)
 
 void Tablero::rotarDerecha(int num)
 {
-    std::vector<std::vector<int>> tempShape;
-    if(num == 0){
-        tempShape = ActualTetromino; // Crear una copia temporal de la forma actual
-    }
-    if(num == 1){
-        tempShape = virtualTetromino; // Crear una copia temporal de la forma actual
-    }
-    int n = tempShape.size();                                 // Obtener el tamaño de la matriz cuadrada
-    std::vector<std::vector<int>> rotatedShape(n, std::vector<int>(n, 0)); // Crear una nueva matriz rotada
+    std::vector<std::vector<int>>& tempShape = (num == 0) ? ActualTetromino : virtualTetromino;
+    int n = tempShape.size();
+    std::vector<std::vector<int>> rotatedShape(n, std::vector<int>(n, 0));
 
     for (int i = 0; i < n; ++i)
     {
@@ -203,11 +197,12 @@ void Tablero::rotarDerecha(int num)
         }
     }
 
+    tempShape = rotatedShape; // Actualizar la forma con la forma rotada
     if(num == 0){
-        ActualTetromino = tempShape; // Actualizar la forma actual con la forma rotada
+        ActualTetromino = tempShape; // Si es la forma actual, actualizar
     }
-    if(num == 1){
-        virtualTetromino = tempShape; 
+    else if(num == 1){
+        virtualTetromino = tempShape; // Si es la forma virtual, actualizar
     }
 }
 
@@ -256,10 +251,10 @@ void Tablero::rotar180(int num)
 
 void Tablero::printT(){
     
-    int n = ActualTetromino.size();
+    int n = virtualTetromino.size();
     for (int i = n - 1; i >= 0; i--){
         for (int j = 0; j < n; j++){
-            cout <<ActualTetromino[i][j];
+            cout <<virtualTetromino[i][j];
         }
         cout << endl;
     }

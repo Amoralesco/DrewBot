@@ -28,6 +28,12 @@ void pruebas();
 
 int main() {
 
+Tablero tetris;
+
+//tetris.virtualTetromino={{0, 0, 0, 0}, {0, 0, 0, 0}, {2, 2, 2, 2}, {0, 0, 0, 0}};
+//tetris.rotarDerecha(1);
+//tetris.printT();
+
 pruebas();
 
 return 0;
@@ -37,7 +43,7 @@ return 0;
 
 void pruebas(){
     Tablero tetris;
-    int imax = 500;
+    int imax = 12;
    // tetris.obtenerFiguras();
 
     
@@ -45,7 +51,7 @@ void pruebas(){
         tetris.update();
         tetris.betterMove();
         tetris.resetVirtualT();
-        tetris.print();
+        cout<<12-imax<< " : intento "<<endl;
         //tetris.printT();
 
 

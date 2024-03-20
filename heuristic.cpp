@@ -52,7 +52,9 @@ void Tablero:: virtualsetTable(int x){
     y += size -most - aux;
     for(int i = 0; i < size-most; i++ ){
         for(int j = vminx; j < size - vmaxx;  j++ ){
+            if (y - i < 23 && x + j < 10 && y - i >= 0 && x + j >= 0){
             virtualTable[y - i][x + j] = (virtualTable[y - i][x + j] == 0) ? virtualTetromino[size - i - 1][j] : virtualTable[y - i][x + j];
+            }
         }
     }
   
@@ -152,7 +154,6 @@ int Tablero::totalIrregularidades(){
         temp=(virtualColumna[i]-virtualColumna[i+1]);
         temp = (temp < 0) ? -temp : temp;
         bump+=temp;
-
     }
     return bump;
 }
@@ -165,11 +166,12 @@ float Tablero::positionValue(){
     int b = lineasCompletas();
     int c = totalAgujeros();
     int d = totalIrregularidades();
-    float values[4]= {-0.510066,0.760666,-0.35663,-0.184483};
+    float values[4]= {-0.510066,0.760666,-0.75663,-0.184483};
     score = a*values[0]+b*values[1]+c*values[2]+d*values[3];
     cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<endl;
-    cout<<score<<" value score"<<endl;
-    Sleep(10);
+   // cout<<score<<" value score"<<endl;
+ //   Sleep(10);
+    printT();
     return score;
 }
 
@@ -177,17 +179,23 @@ float Tablero::positionValue(){
 
 
 void Tablero::betterMove(){
-    virtualcalculateMinMax();
+    int size = virtualTetromino.size();
     float better=-1000;
     float value = 0;
     int xpos = 0;
     int rot = 0;
     for(int j=0;j<4; j++){
-        for(int i=-vminx;i<= 10-virtualTetromino.size()+vmaxx;i++){
+        virtualcalculateMinMax();
+        cout<<vminx<<" minimo"<<vmaxx<<" maximo"<<endl;
+        cout <<" pre entrar rotacion: "<<j<<endl;
+        for(int i=-vminx;i<= 10-size+vmaxx;i++){
 
             /**/
+            cout <<" post entrar "<<endl;
             resetVirtualT();
+            
             virtualsetTable(i);
+            
             value = positionValue();
             cout<<" rot: "<<j<<" pos: "<<i<<" value: "<<value<<endl;
             if(value > better){
@@ -214,5 +222,6 @@ void Tablero::betterMove(){
     dropRows();
     resetVirtualT();
     virtualcalculateMinMax();
+    print();
     steps(xpos-initialposition,rot,vminx,vmaxx);
 }
