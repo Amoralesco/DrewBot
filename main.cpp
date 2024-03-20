@@ -43,7 +43,7 @@ return 0;
 
 void pruebas(){
     Tablero tetris;
-    int imax = 12;
+    int imax = 500;
    // tetris.obtenerFiguras();
 
     
@@ -51,7 +51,7 @@ void pruebas(){
         tetris.update();
         tetris.betterMove();
         tetris.resetVirtualT();
-        cout<<12-imax<< " : intento "<<endl;
+        cout<<500-imax<< " : intento "<<endl;
         //tetris.printT();
 
 

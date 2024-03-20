@@ -85,7 +85,9 @@ void Tablero::setTable(int x){
 
     for(int i = 0; i < size-most; i++ ){
         for(int j = minx; j < size - maxx;  j++ ){
+            if (y - i < 23 && x + j < 10 && y - i >= 0 && x + j >= 0){
             TetrisTable[y - i][x + j] = (TetrisTable[y - i][x + j] == 0) ? ActualTetromino[size - i - 1][j] : TetrisTable[y - i][x + j];
+            }
         }
     }
   

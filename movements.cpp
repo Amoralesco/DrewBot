@@ -18,29 +18,29 @@ using namespace std;
 
 void Tablero::steps(int v1, int v2, int s1, int s2){
 
-    Sleep(10);
+    Sleep(100);
     if(v2 == 1){
         movement(GIROI);   
-       //  Sleep(100);
+         Sleep(100);
     }if(v2 == 2){
         movement(GIROT);
-     //   Sleep(100);
+        Sleep(100);
     }if(v2 == 3){
         movement(GIROD);
-    //    Sleep(100);
+        Sleep(100);
     }
     if(v1<0){
         for(int i = v1 ; i< 0; i++){
-        //    Sleep(50);
+            Sleep(50);
             movement(MOVERI);
         }
     } if(v1>0){
         for(int i = 0; i <  v1; i++){
-         //   Sleep(50);
+            Sleep(50);
             movement(MOVERD);
         }
     }
-   Sleep(20);
+   Sleep(200);
     movement(SALTO);
 
 }
