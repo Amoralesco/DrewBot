@@ -186,18 +186,12 @@ void Tablero::betterMove(){
     int rot = 0;
     for(int j=0;j<4; j++){
         virtualcalculateMinMax();
-        cout<<vminx<<" minimo"<<vmaxx<<" maximo"<<endl;
-        cout <<" pre entrar rotacion: "<<j<<endl;
         for(int i=-vminx;i<= 10-size+vmaxx;i++){
-
-            /**/
-            cout <<" post entrar "<<endl;
             resetVirtualT();
             
             virtualsetTable(i);
             
             value = positionValue();
-            cout<<" rot: "<<j<<" pos: "<<i<<" value: "<<value<<endl;
             if(value > better){
                 better = value;
                 xpos = i;
@@ -206,22 +200,17 @@ void Tablero::betterMove(){
         }
         rotarDerecha(1);
     }
-    cout<<xpos<<" posicion del tetromino"<<endl;
-    cout<<rot<<" en la rotacion "<<endl;
-    cout <<better<<" valor de la mejor posicion"<< endl;
-
-    
     if(rot == 1){  // implementar logica con la heuristica
         rotarDerecha(0);
-    }else if(rot == 2 ){
+    }else if(rot == 2){
         rotar180(0);
     }else if(rot == 3){
         rotarIzquierda(0);             
     }
+    calculateMinMax();
     setTable(xpos);
     dropRows();
     resetVirtualT();
     virtualcalculateMinMax();
-    print();
     steps(xpos-initialposition,rot,vminx,vmaxx);
 }

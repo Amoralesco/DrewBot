@@ -28,11 +28,11 @@ void pruebas();
 
 int main() {
 
-Tablero tetris;
+//Tablero tetris;
 
-//tetris.virtualTetromino={{0, 0, 0, 0}, {0, 0, 0, 0}, {2, 2, 2, 2}, {0, 0, 0, 0}};
-//tetris.rotarDerecha(1);
-//tetris.printT();
+//tetris.ActualTetromino={{0, 0, 0, 0}, {0, 0, 0, 0}, {2, 2, 2, 2}, {0, 0, 0, 0}};
+//tetris.rotarIzquierda(0);
+//tetris.printH();
 
 pruebas();
 

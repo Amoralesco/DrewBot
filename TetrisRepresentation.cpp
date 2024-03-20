@@ -25,7 +25,7 @@ Tablero::Tablero() : C({{1, 1}, {1, 1}}), I({{0, 0, 0, 0}, {0, 0, 0, 0}, {2, 2, 
 
 void Tablero::setTable(int x){ 
 
-    //printT();
+    printH();
     int size = ActualTetromino.size();
     int y,most,aux = 0;
 
@@ -42,6 +42,7 @@ void Tablero::setTable(int x){
     }
 
     band = false;
+        cout <<" debug2 "<<endl;
 
     for(int i = 22; i >= 0 && !band; i--){//calcular altura    
         for(int j =x+minx;j <x+size-maxx &&!band; j++){
@@ -57,7 +58,7 @@ void Tablero::setTable(int x){
 
     band = false;
 
-
+    cout <<" debug3 "<<endl;
     while(!band && y >= 0){
         for(int i = minx;i < size-maxx;i++){
             if(ActualTetromino[most+aux][i]!=0 && TetrisTable[y][i+x]!= 0){
@@ -81,7 +82,7 @@ void Tablero::setTable(int x){
 
     y += size -most - aux;
 
-
+    cout <<" debug4 "<<endl;
 
     for(int i = 0; i < size-most; i++ ){
         for(int j = minx; j < size - maxx;  j++ ){
@@ -91,6 +92,7 @@ void Tablero::setTable(int x){
         }
     }
   
+      cout <<" debug5 "<<endl;
 }
 
 
@@ -212,6 +214,7 @@ void Tablero::rotarDerecha(int num)
 
 void Tablero::rotar180(int num)
 {
+
     std::vector<std::vector<int>> tempShape;
     if(num == 0){
         tempShape = ActualTetromino; // Crear una copia temporal de la forma actual
@@ -257,6 +260,19 @@ void Tablero::printT(){
     for (int i = n - 1; i >= 0; i--){
         for (int j = 0; j < n; j++){
             cout <<virtualTetromino[i][j];
+        }
+        cout << endl;
+    }
+}
+
+
+
+void Tablero::printH(){
+    
+    int n = ActualTetromino.size();
+    for (int i = n - 1; i >= 0; i--){
+        for (int j = 0; j < n; j++){
+            cout <<ActualTetromino[i][j];
         }
         cout << endl;
     }
